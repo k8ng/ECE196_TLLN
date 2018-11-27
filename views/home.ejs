@@ -1,0 +1,55 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+
+<div class='ui stackable two column grid'>
+	<div class='column'> <!--"All Lights" Switch-->
+		<h2>Lights Switches</h2>
+		<div class='ui form'> <!--List of lights to toggle-->
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='l_switch1'>
+					<label>Light 1</label>
+				</div>
+			</div>
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='l_switch2'>
+					<label>Light 2</label>
+				</div>
+			</div>
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='l_switch3'>
+					<label>Light 3</label>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class='column'> <!--"Groups" Switch-->
+		<h2>Groups Switches</h2>
+		<div class='ui form'> <!--List of groups to toggle-->
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='g_switch1'>
+					<label>Group 1</label>
+				</div>
+			</div>
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='g_switch2'>
+					<label>Group 2</label>
+				</div>
+			</div>
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='g_switch3'>
+					<label>Group 3</label>
+				</div>
+			</div>
+	</div>
+	
+</div>
+
+<script type="text/javascript" src='/js/home.js'></script>
+<% include ./partials/foot %>

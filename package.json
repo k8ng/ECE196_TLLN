@@ -1,0 +1,24 @@
+{
+  "name": "ece196_group_project",
+  "version": "1.0.0",
+  "description": "Manage your lights better!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k8ng/ECE196_TLLN.git"
+  },
+  "author": "Kyle Ng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k8ng/ECE196_TLLN/issues"
+  },
+  "homepage": "https://github.com/k8ng/ECE196_TLLN#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "semantic-ui": "^2.4.2"
+  }
+}
