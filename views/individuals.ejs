@@ -1,0 +1,32 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+
+<h1 class='ui header'>Individual Lights</h1>
+<br>
+<div class='ui stackable grid'>
+	<div class='column'> <!--"All Lights" Switch-->
+		<div class='ui form' action='/switch' method='post' id='lights-switch'> <!--List of lights to toggle-->
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='l_switch1'>
+					<label>Light 1</label>
+				</div>
+			</div>
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='l_switch2'>
+					<label>Light 2</label>
+				</div>
+			</div>
+			<div class='field'>
+				<div class='ui toggle checkbox'>
+					<input type='checkbox' name='l_switch3'>
+					<label>Light 3</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+
+<script type="text/javascript" src='/js/individuals.js'></script>
+<%include ./partials/foot %>

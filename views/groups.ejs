@@ -1,25 +1,75 @@
 <% include ./partials/head %>
 <% include ./partials/header %>
 
-<h1 class='ui header'>Group Management</h1>
 
-<div class='ui three column container'>
-	<div class='six wide column'>
-		<inlist class='ui vertical text menu'>
-			<div class='header item'>Existing Lights in Group</div>
-			<a id='l1' class='item'>Light 1</a>
-			<a id='l2' class='item'>Light 2</a>
-			<a id='l3' class='item'>Light 3</a>
-		</inlist>
-	</div>
-	<div class='four wide column'>
-	</div>
-	<div class='six wide column'>
-		<div class='ui vertical text menu'>
-		</div>
-	</div>
+
+
+
+<h1 class='ui header'>Group Management</h1>
+<br>
+
+<div class="ui styled accordion" id="qus_acc">
+  <div class="item">
+    <div class="active title">
+      <div class="qus_label">
+        <i class="dropdown icon"></i>
+        <label>Group A</label>
+      </div>
+      <div class="field" align="right">
+        <div class="ui toggle checkbox">
+        	<input type='checkbox'>
+        	<label>Toggle Group</label>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+        <div class="ui form">
+          <div class="vertical grouped fields">
+          	<div class='field'>
+          		<div class='ui toggle checkbox'>
+          			<input type='toggle' class='hidden'>
+          			<label>Light A1</label>
+          		</div>
+          	</div>
+          	<div class='field'>
+          		<div class='ui toggle checkbox'>
+          			<input type='toggle'>
+          			<label>Light A2</label>
+          		</div>
+          	</div>
+          <div class='field'>
+          		<div class='ui toggle checkbox'>
+          			<input type='toggle'>
+          			<label>Light A3</label>
+          		</div>
+          	</div>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 
-
-<script type="text/javascript" src='/js/groups.js'></script>
+<!--<div class='ui stackable two column grid'>
+	<div class='ui form' action='/switch' method='post' id='groups-switch'> 
+		<div class='field'>
+			<div class='ui toggle checkbox'>
+				<input type='checkbox' name='g_switch1'>
+				<label>Group 1</label>
+			</div>
+		</div>
+		<div class='field'>
+			<div class='ui toggle checkbox'>
+				<input type='checkbox' name='g_switch2'>
+				<label>Group 2</label>
+			</div>
+		</div>
+		<div class='field'>
+			<div class='ui toggle checkbox'>
+				<input type='checkbox' name='g_switch3'>
+				<label>Group 3</label>
+			</div>
+		</div>
+</div>
+-->
+<script type='text/javascript' src='/js/groups.js'></script>
 <% include ./partials/foot %>

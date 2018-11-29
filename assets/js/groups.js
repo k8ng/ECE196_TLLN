@@ -1,11 +1,11 @@
 setActivePage('nav_groups');
 
-function selectLight(light_id) {
-	var items = document.querySelector('inlist').children;
+$('.ui.accordion')
+  .accordion()
+;
 
-	for (i=1; i<items.length; i++) {
-		items[i].classList.remove('active');
-	}
-	
-	document.getElementById(light_id).classList.add('active');
-}
+$('.ui.accordion').accordion({
+  selector: {
+    trigger: '.title .qus_label'
+  }
+});
