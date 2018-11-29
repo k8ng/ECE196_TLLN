@@ -1,21 +1,16 @@
-var express = require('express')
-	app = express();
+var express = require('express'),
+    bodyParser = require('body-parser'),
+	  app = express();
+
+var indexRoutes = require('./routes/index');
 
 app.set('port', (process.env.PORT || 3000))
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/assets'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/', (req, res) => {
-	res.render('home');
-});
-
-app.get('/individuals', (req,res) => {
-	res.render('individuals');
-})
-
-app.get('/groups', (req,res) => {
-	res.render('groups');
-})
-
+// ROUTES
+app.use('/', indexRoutes);
 
 app.listen(app.get('port'), () => console.log('Listening on port ' + app.get('port')));
