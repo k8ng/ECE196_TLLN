@@ -1,9 +1,11 @@
 setActivePage('nav_indiv');
 
-$('.ui.toggle').checkbox();
+checkbox = $('.ui.toggle').checkbox();
+
+console.log(checkbox);
 
 $('.ui.toggle').click(function() {
-  if ($('.ui.toggle').checkbox('is checked')) {
+  if ($(this).checkbox('is checked')) {
     console.log('Toggle On');
   } else {
     console.log('Toggle Off');

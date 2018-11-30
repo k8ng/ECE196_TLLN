@@ -14,4 +14,9 @@ router.get('/groups', (req,res) => {
 	res.render('groups');
 });
 
+router.post('/set-lights', (req,res) => {
+  console.log('form posted');
+  res.redirect('/');
+});
+
 module.exports = router;

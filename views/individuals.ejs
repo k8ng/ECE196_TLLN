@@ -1,11 +1,15 @@
 <% include ./partials/head %>
 <% include ./partials/header %>
 
+<div class ='form' action='../set-lights' method='post'>
+  <input type='submit' value='test'>
+</div>
+
 <h1 class='ui header'>Individual Lights</h1>
 <br>
 <div class='ui stackable grid'>
 	<div class='column'> <!--"All Lights" Switch-->
-		<div class='ui form' action='/switch' method='post' id='lights-switch'> <!--List of lights to toggle-->
+		<div class='ui form' action='/set-lights' method='post' id='lights-switch'> <!--List of lights to toggle-->
 			<div class='field'>
 				<div class='ui toggle checkbox'>
 					<input type='checkbox' name='l_switch1'>
