@@ -16,7 +16,9 @@ router.get('/groups', (req,res) => {
 
 router.post('/set-lights', (req,res) => {
   console.log('form posted');
-  res.redirect('/');
+  console.log('name: ', req.body.name);
+  console.log('lightIsON: ', req.body.lightIsOn);
+  return res.send('1');
 });
 
 module.exports = router;

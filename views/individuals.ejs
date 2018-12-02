@@ -1,36 +1,34 @@
 <% include ./partials/head %>
 <% include ./partials/header %>
 
-<div class ='form' action='../set-lights' method='post'>
-  <input type='submit' value='test'>
-</div>
 
 <h1 class='ui header'>Individual Lights</h1>
 <br>
+
 <div class='ui stackable grid'>
 	<div class='column'> <!--"All Lights" Switch-->
-		<div class='ui form' action='/set-lights' method='post' id='lights-switch'> <!--List of lights to toggle-->
+		<form class='ui form' action='/individuals' method='post' id='lights-switch'> <!--List of lights to toggle-->
 			<div class='field'>
-				<div class='ui toggle checkbox'>
-					<input type='checkbox' name='l_switch1'>
+				<div class='ui toggle checkbox' name='l_switch1'>
+					<input type='checkbox'>
 					<label>Light 1</label>
 				</div>
 			</div>
 			<div class='field'>
-				<div class='ui toggle checkbox'>
-					<input type='checkbox' name='l_switch2'>
+				<div class='ui toggle checkbox' name='l_switch2'>
+					<input type='checkbox' >
 					<label>Light 2</label>
 				</div>
 			</div>
 			<div class='field'>
-				<div class='ui toggle checkbox'>
-					<input type='checkbox' name='l_switch3'>
+				<div class='ui toggle checkbox' name='l_switch3'>
+					<input type='checkbox' >
 					<label>Light 3</label>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
-</div>	
+</div>
 
 <script type="text/javascript" src='/js/individuals.js'></script>
 <%include ./partials/foot %>
