@@ -10,9 +10,10 @@ $('.ui.toggle').click(function() {
   if ($(this).checkbox('is checked')) {
     console.log('Toggle On');
 
-    // we don't want to reload the page whenever we post something
-    // so we use a asynchronous jQuery (ajax) to update the database
-    // form data
+    // we don't want to reload the page whenever we post something so we use 
+    // an asynchronous jQuery (ajax) to update the database form data
+    
+    // create the data
     var formData = {
       name: $(this).attr('name'),
       lightIsOn: true
@@ -39,7 +40,6 @@ $('.ui.toggle').click(function() {
   } else {
     console.log('Toggle Off');
 
-    // form data
     var formData = {
       name: $(this).attr('name'),
       lightIsOn: false

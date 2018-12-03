@@ -10,8 +10,8 @@ var lightsSchema = new mongoose.Schema({
   hubIP: {  // IP of the RPi this light is connected to
     type: String
   },
-  lightID: {  // The pin number on the RPi or the address on the strip
-    type: Number
+  lightID: {  // Unique identifier for the light
+    type: String
   }
 });
 

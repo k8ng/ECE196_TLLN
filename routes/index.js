@@ -7,7 +7,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/individuals', (req,res) => {
-	res.render('individuals');
+  // find all the lights in the database
+  db.Lights.find()
+  .then( function(lightCursor) {
+    // render the page based on the lights
+	  res.render('individuals', { lights: lightCursor});
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
 });
 
 router.get('/groups', (req,res) => {
@@ -17,8 +25,54 @@ router.get('/groups', (req,res) => {
 router.post('/set-lights', (req,res) => {
   console.log('form posted');
   console.log('name: ', req.body.name);
-  console.log('lightIsON: ', req.body.lightIsOn);
-  return res.send('1');
+  console.log('lightIsOn: ', req.body.lightIsOn);
+
+  // setting
+  var lightSetting = {
+    'lightIsOn': false,
+  }
+  
+  if (req.body.lightIsOn) {
+    lightSetting['lightIsOn'] = true; 
+  }
+
+  // find and update the database
+  db.Lights.findOneAndUpdate({'lightID': req.body.name}, lightSetting)
+  .catch( function(err) {
+    res.send(err);
+  });
+
+  return res.send('updated database');
+});
+
+router.get('/setup-lights', (req,res) => {
+  res.render('setup-lights');   
+});
+
+router.post('/setup-lights', (req,res) => {
+  // setup the data to post
+  var lightSettings = {
+    'name': req.body.lightName,
+    'lightIsOn': false,
+    'hubIP': req.body.hubIP,
+    'lightID': req.body.lightID
+  }
+
+  // make appropriate change to lightIsOn settings
+  if (req.body.lightIsOn) {
+    lightSettings['lightIsOn'] = true;
+  }
+
+  console.log(lightSettings);
+
+  // update the database entry for that lightID
+  db.Lights.findOneAndUpdate({lightID: req.body.lightID}, lightSettings, {'new': true, 'upsert': true})
+  .then( function(edited) {
+    res.redirect('/setup-lights');
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
 });
 
 module.exports = router;

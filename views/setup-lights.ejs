@@ -1,0 +1,18 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+
+<h1>Setup Lights</h1>
+<form action='/setup-lights' method='post'>
+  <input type='text' name='lightName'>Light Name
+  <br>
+  <input type='checkbox' name='lightIsOn'>Light On
+  <br>
+  <input type='text' name='hubIP'>Hub IP
+  <br>
+  <input type='text' name='lightID'>Light ID
+  <br>
+  <input type='submit' value='go'>
+  <br>
+</form>
+
+<% include ./partials/foot %>

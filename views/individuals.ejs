@@ -1,31 +1,29 @@
 <% include ./partials/head %>
 <% include ./partials/header %>
-
-
 <h1 class='ui header'>Individual Lights</h1>
+
+<br>
+
+<a href='/setup-lights'>Setup Light</a>
+
 <br>
 
 <div class='ui stackable grid'>
-	<div class='column'> <!--"All Lights" Switch-->
-		<form class='ui form' action='/individuals' method='post' id='lights-switch'> <!--List of lights to toggle-->
-			<div class='field'>
-				<div class='ui toggle checkbox' name='l_switch1'>
-					<input type='checkbox'>
-					<label>Light 1</label>
-				</div>
-			</div>
-			<div class='field'>
-				<div class='ui toggle checkbox' name='l_switch2'>
-					<input type='checkbox' >
-					<label>Light 2</label>
-				</div>
-			</div>
-			<div class='field'>
-				<div class='ui toggle checkbox' name='l_switch3'>
-					<input type='checkbox' >
-					<label>Light 3</label>
-				</div>
-			</div>
+  <!--"All Lights" Switch-->
+	<div class='column'> 
+  <!--List of lights to toggle-->
+		<form class='ui form' action='/individuals' method='post' id='lights-switch'>
+      <!-- Populate the lights -->
+      <% lights.forEach( function(light, i) { %>
+        <%= light %>
+        <div class='field'>
+          <div class='ui toggle checkbox' name='<%= light.lightID %>'>
+            <!-- Automatically check the checkbox if it's on in the database -->
+            <input type='checkbox' <%= light.lightIsOn ? 'checked' : '' %>>
+            <label><%= light.name %></label>
+          </div>
+        </div>
+      <% }) %>
 		</form>
 	</div>
 </div>
