@@ -37,7 +37,7 @@ router.post('/set-lights', (req,res) => {
   }
 
   // find and update the database
-  db.Lights.findOneAndUpdate({'lightID': req.body.name}, lightSetting)
+  db.Lights.findOneAndUpdate({'_id': req.body.name}, lightSetting)
   .catch( function(err) {
     res.send(err);
   });
@@ -66,7 +66,7 @@ router.post('/setup-lights', (req,res) => {
   console.log(lightSettings);
 
   // update the database entry for that lightID
-  db.Lights.findOneAndUpdate({lightID: req.body.lightID}, lightSettings, {'new': true, 'upsert': true})
+  db.Lights.findOneAndUpdate({name: req.body.lightName}, lightSettings, {'new': true, 'upsert': true})
   .then( function(edited) {
     res.redirect('/setup-lights');
   })

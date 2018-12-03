@@ -17,7 +17,7 @@
       <% lights.forEach( function(light, i) { %>
         <%= light %>
         <div class='field'>
-          <div class='ui toggle checkbox' name='<%= light.lightID %>'>
+          <div class='ui toggle checkbox' name='<%= light._id %>'>
             <!-- Automatically check the checkbox if it's on in the database -->
             <input type='checkbox' <%= light.lightIsOn ? 'checked' : '' %>>
             <label><%= light.name %></label>
