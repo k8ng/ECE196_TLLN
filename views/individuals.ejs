@@ -14,25 +14,26 @@
   <!--"All Lights" Switch-->
 	<div class='column'> 
     <!--List of lights to toggle-->
-    <!-- Populate the lights -->
-    <% lights.forEach( function(light, i) { %>
-      <%= light %>
-      <div class='inline fields'>
-        <div class='field'>
-          <button class='ui red mini icon button' id='delete-button' name='<%= light._id %>'>
-            <i class="x icon"></i>
-          </button>
-        </div>
-
-        <div class='field'>
-          <div class='ui toggle checkbox' name='<%= light._id %>'>
-            <!-- Automatically check the checkbox if it's on in the database -->
-            <input type='checkbox' <%= light.lightIsOn ? 'checked' : '' %>>
-            <label><%= light.name %></label>
+    <div class='ui form'>
+      <!-- Populate the lights -->
+      <% lights.forEach( function(light, i) { %>
+        <%= light %>
+        <div class='inline fields'>
+          <div class='field'>
+            <button class='ui red mini icon button' id='delete-button' name='<%= light._id %>'>
+              <i class="x icon"></i>
+            </button>
+          </div>
+          <div class='field'>
+            <div class='ui toggle checkbox' name='<%= light._id %>'>
+              <!-- Automatically check the checkbox if it's on in the database -->
+              <input type='checkbox' <%= light.lightIsOn ? 'checked' : '' %>>
+              <label><%= light.name %></label>
+            </div>
           </div>
         </div>
-      </div>
-    <% }) %>
+      <% }) %>
+    </div>
 	</div>
 </div>
 
