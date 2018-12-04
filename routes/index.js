@@ -21,7 +21,10 @@ router.get('/individuals', (req,res) => {
 router.get('/groups', (req,res) => {
   db.Groups.find()
   .then( function(groupCursor) {
-	  res.render('groups');
+    db.Lights.find()
+    .then( function(lightCursor) {
+	    res.render('groups', { groups: groupCursor, lights: lightCursor, db: db});
+    });
   })
   .catch( function(err) {
     res.send(err);
@@ -76,7 +79,7 @@ router.post('/setup-lights', (req,res) => {
   console.log(lightSettings);
 
   // update the database entry for that lightID
-  db.Lights.findOneAndUpdate({name: req.body.lightName}, lightSettings, {'new': true, 'upsert': true})
+  db.Lights.create(lightSettings)
   .then( function(edited) {
     res.redirect('/individuals');
   })
@@ -97,8 +100,25 @@ router.post('/setup-group', (req,res) => {
     res.redirect('/groups');
     return;
   }
-
+  
   // setup the data to post
+  //console.log(req.body);
+  var light_ids = Object.keys(req.body.selection);
+  var groupSettings = {
+    'name': req.body.groupName,
+    'lights': light_ids
+  }
+  //console.log(groupSettings);
+
+  // create new database entry
+  db.Groups.create(groupSettings)
+  .then( function(edited) {
+    res.redirect('/groups');
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
+
 });
 
 module.exports = router;

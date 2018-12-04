@@ -14,10 +14,6 @@ $('.button')
   .popup()
 ;
 
-$('.ui.modal')
-  .modal()
-;
-
 $('.ui.button').click(function() {
 	if ($(this).attr('id') == 'add-group-button') {
 		$('#add-group-modal').modal('show');
@@ -31,4 +27,4 @@ $('.ui.button').click(function() {
 	else if ($(this).attr('id') == 'delete-group-button') {
 
 	}
-})
+});

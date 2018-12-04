@@ -1,7 +1,6 @@
 <% include ./partials/head %>
 <% include ./partials/header %>
 
-
 <h1 class='ui header'>Group Management</h1>
 <button class='ui blue labeled icon button' id='add-group-button'>
   <i class='plus square outline icon'></i>
@@ -12,62 +11,60 @@
 <br>
 
 <div class="ui styled accordion" id="qus_acc">
-  <div class="item">
-    <div class="active title">
-      <div class="qus_label">
-        <i class="dropdown icon"></i>
-        <label>Group A</label>
-      </div>
-      <div class='inline fields'>
-	      <div class="field" align='right'>
-	        <div class="ui toggle checkbox">
-	        	<input type='checkbox'>
-	        	<label>Toggle Group</label>
-	        </div>
-	      </div>
-	  </div>
-    </div>
-    <div class="active content">
-        <div class="ui form">
-          <div class="grouped fields">
-          	<div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light A1</label>
-          		</div>
-          	</div>
-          	<div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light A2</label>
-          		</div>
-          	</div>
-          <div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light A3</label>
-          		</div>
-          	</div>
+  <% groups.forEach( function(group, i) {%>
+    <div class="item">
+      <div class="title">
+        <div class="qus_label">
+          <i class="dropdown icon"></i>
+          <label><%= group.name %></label>
+        </div>
+        <div class='inline fields'>
+          <div class="field" align='right'>
+            <div class="ui toggle checkbox">
+              <input type='checkbox'>
+              <label>Toggle Group</label>
+            </div>
           </div>
         </div>
-        <div class='field' align='right'>
-	      	<div class='ui icon buttons'>
-	      		<button class='ui button' id='add-lights-button' data-content="Add lights to group">
-	      			<i class='plus square outline icon'></i>
-	      		</button>
-	      		<button class='ui button' id='remove-lights-button' data-content="Remove lights from group">
-	      			<i class='minus square outline icon'></i>
-	      		</button>
-	      		<button class='ui red button' id='delte-group-button' data-content="Delete group">
-	      			<i class='trash alternate outline icon'></i>
-	      		</button>
-	      	</div>
-	      </div>
+      </div>
+
+      <div class="content">
+          <!-- Light switches -->
+          <div class="ui form">
+            <div class="grouped fields">
+
+              <% group.lights.forEach( function(light,i) { %>
+                <div class='field'>
+                  <div class='ui toggle checkbox'>
+                    <input type='checkbox'>
+                    <label><%= lights.find(function(e) { return e._id == light}).name %></label>
+                  </div>
+                </div>
+              <% }) %>
+
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class='field' align='right'>
+            <div class='ui icon buttons'>
+              <button class='ui button' id='add-lights-button' data-content="Add lights to group">
+                <i class='plus square outline icon'></i>
+              </button>
+              <button class='ui button' id='remove-lights-button' data-content="Remove lights from group">
+                <i class='minus square outline icon'></i>
+              </button>
+              <button class='ui red button' id='delte-group-button' data-content="Delete group">
+                <i class='trash alternate outline icon'></i>
+              </button>
+            </div>
+          </div>
+      </div>
     </div>
-  </div>
+  <%})%>
 </div>
 
-
+<!-- Popup window for adding groups -->
 <div class='ui modal' id='add-group-modal'>
 	<div class='header'>Add New Group</div>
 
@@ -79,34 +76,25 @@
       	</div>
      	<div class='grouped fields'>
      		<label>Select lights to add:</label>
-	      	<div class='field'>
-	      		<div class='ui checkbox'>
-	      			<input type='checkbox'>
-	      			<label>Light 1</label>
-	      		</div>
-	      	</div>
-	      	<div class='field'>
-	      		<div class='ui checkbox' id='hello'>
-	      			<input type='checkbox'>
-	      			<label>Light 2</label>
-	      		</div>
-	      	</div>
-	      	<div class='field'>
-	      		<div class='ui checkbox' id='hello'>
-	      			<input type='checkbox'>
-	      			<label>Light 3</label>
-	      		</div>
-	      	</div>
-		</div>
+          <% lights.forEach( function(light,i) { %>
+            <div class='field'>
+              <div class='ui checkbox'>
+                <input type='checkbox' name='selection[<%= light._id %>]'>
+                <label><%= light.name%></label>
+              </div>
+            </div>
+          <% }) %>
+		  </div>
     </form>
   </div>
 
   <div class='actions'>
     <button class='ui button' type='submit' form='add-group-form'>Add Group</button>
-    <div class='ui deny button'>Cancel</div>
+    <div class='ui red deny button'>Cancel</div>
   </div>
 </div>
 
+<!-- Popup window for adding lights to a group -->
 <div class='ui modal' id='add-lights-modal'>
 	<div class='header'>Add Lights to Group</div>
 
@@ -135,13 +123,14 @@
 		</div>
     </form>
   </div>
-
   <div class='actions'>
     <button class='ui button' type='submit' form='add-lights-form'>Add Lights</button>
-    <div class='ui deny button'>Cancel</div>
+    <div class='ui red deny button'>Cancel</div>
   </div>
 </div>
 
+
+<!-- Popup window for removing lights from a group -->
 <div class='ui modal' id='remove-lights-modal'>
 	<div class='header'>Remove Lights from Group</div>
 
@@ -173,7 +162,7 @@
 
   <div class='actions'>
     <button class='ui button' type='submit' form='remove-lights-form'>Remove Lights</button>
-    <div class='ui deny button'>Cancel</div>
+    <div class='ui red deny button'>Cancel</div>
   </div>
 </div>
 
