@@ -26,7 +26,7 @@ $('.ui.toggle').click(function() {
       type: 'POST',
       url: '/set-lights',
       contentType: 'application/json',
-      dataType: 'json',
+      dataType: 'text',
       data: JSON.stringify(formData),
       success: function() {
         console.log('Successfully posted');
@@ -49,7 +49,7 @@ $('.ui.toggle').click(function() {
       type: 'POST',
       url: '/set-lights',
       contentType: 'application/json',
-      dataType: 'json',
+      dataType: 'text',
       data: JSON.stringify(formData),
       success: function() {
         console.log('Successfully posted');
