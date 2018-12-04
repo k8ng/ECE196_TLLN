@@ -10,17 +10,19 @@
 
 <div class="ui styled accordion" id="qus_acc">
   <div class="item">
-    <div class="active title">
+    <div class="title">
       <div class="qus_label">
         <i class="dropdown icon"></i>
         <label>Group A</label>
       </div>
-      <div class="field" align="right">
-        <div class="ui toggle checkbox">
-        	<input type='checkbox'>
-        	<label>Toggle Group</label>
-        </div>
-      </div>
+      <div class='inline fields'>
+	      <div class="field" align='right'>
+	        <div class="ui toggle checkbox">
+	        	<input type='checkbox'>
+	        	<label>Toggle Group</label>
+	        </div>
+	      </div>
+	  </div>
     </div>
     <div class="content">
         <div class="ui form">
@@ -45,107 +47,22 @@
           	</div>
           </div>
         </div>
-    </div>
-  </div>
-<div class="item">
-    <div class="active title">
-      <div class="qus_label">
-        <i class="dropdown icon"></i>
-        <label>Group B</label>
-      </div>
-      <div class="field" align="right">
-        <div class="ui toggle checkbox">
-        	<input type='checkbox'>
-        	<label>Toggle Group</label>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-        <div class="ui form">
-          <div class="grouped fields">
-          	<div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light B1</label>
-          		</div>
-          	</div>
-          	<div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light B2</label>
-          		</div>
-          	</div>
-          <div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light B3</label>
-          		</div>
-          	</div>
-          </div>
-        </div>
-    </div>
-  </div>
-<div class="item">
-    <div class="active title">
-      <div class="qus_label">
-        <i class="dropdown icon"></i>
-        <label>Group C</label>
-      </div>
-      <div class="field" align="right">
-        <div class="ui toggle checkbox">
-        	<input type='checkbox'>
-        	<label>Toggle Group</label>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-        <div class="ui form">
-          <div class="grouped fields">
-          	<div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light C1</label>
-          		</div>
-          	</div>
-          	<div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light C2</label>
-          		</div>
-          	</div>
-          <div class='field'>
-          		<div class='ui toggle checkbox'>
-          			<input type='checkbox'>
-          			<label>Light C3</label>
-          		</div>
-          	</div>
-          </div>
-        </div>
+        <div class='field' align='right'>
+	      	<div class='ui icon buttons'>
+	      		<button class='ui button' data-content="Add lights to group">
+	      			<i class='plus square outline icon'></i>
+	      		</button>
+	      		<button class='ui button' data-content="Remove lights from group">
+	      			<i class='minus square outline icon'></i>
+	      		</button>
+	      		<button class='ui button' data-content="Delete group">
+	      			<i class='trash alternate outline icon'></i>
+	      		</button>
+	      	</div>
+	      </div>
     </div>
   </div>
 </div>
 
-<!--<div class='ui stackable two column grid'>
-	<div class='ui form' action='/switch' method='post' id='groups-switch'> 
-		<div class='field'>
-			<div class='ui toggle checkbox'>
-				<input type='checkbox' name='g_switch1'>
-				<label>Group 1</label>
-			</div>
-		</div>
-		<div class='field'>
-			<div class='ui toggle checkbox'>
-				<input type='checkbox' name='g_switch2'>
-				<label>Group 2</label>
-			</div>
-		</div>
-		<div class='field'>
-			<div class='ui toggle checkbox'>
-				<input type='checkbox' name='g_switch3'>
-				<label>Group 3</label>
-			</div>
-		</div>
-</div>
--->
 <script type='text/javascript' src='/js/groups.js'></script>
 <% include ./partials/foot %>
