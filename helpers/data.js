@@ -1,7 +1,7 @@
 var db = require('../models');
 
-exports.getData = function(req, res) {
-	db.Data.find()
+exports.getLights = function(req, res) {
+	db.Lights.find()
 	.then( function(data) {
 		res.json(data);
 	})
