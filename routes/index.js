@@ -50,6 +50,12 @@ router.get('/setup-lights', (req,res) => {
 });
 
 router.post('/setup-lights', (req,res) => {
+  // condition check
+  if (!(req.body.lightName.length && req.body.hubIP.length && req.body.lightID.length)) {
+    res.redirect('/individuals');
+    return;
+  }
+
   // setup the data to post
   var lightSettings = {
     'name': req.body.lightName,

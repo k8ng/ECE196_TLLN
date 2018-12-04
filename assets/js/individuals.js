@@ -60,3 +60,10 @@ $('.ui.toggle').click(function() {
     });
   }
 });
+
+// Show popup when button is hovered over
+$('.button').popup();
+
+$('.ui.button').click(function() {
+  $('.ui.modal').modal('show');
+});
