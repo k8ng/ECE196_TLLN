@@ -4,6 +4,7 @@
   "description": "Manage your lights better!",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,6 +15,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/k8ng/ECE196_TLLN/issues"
+  },
+  "engines": {
+    "node": "10.11.0",
+    "npm": "6.4.1"
   },
   "homepage": "https://github.com/k8ng/ECE196_TLLN#readme",
   "dependencies": {
