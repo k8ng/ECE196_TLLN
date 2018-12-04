@@ -121,4 +121,27 @@ router.post('/setup-group', (req,res) => {
 
 });
 
+// Route to return the data for a group
+router.get('/get-group', (req,res) => {
+  console.log(req.query.groupID);
+  db.Groups.findOne({'_id': req.query.groupID})
+  .then(function (foundGroup) {
+    console.log(foundGroup);
+    res.send(foundGroup);
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
+});
+
+// Route to return all the lights
+router.get('/get-lights', (req,res) => {
+  db.Lights.find().then(function (lights) {
+    res.send(lights);
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
+});
+
 module.exports = router;

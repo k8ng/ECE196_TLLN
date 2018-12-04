@@ -48,13 +48,13 @@
           <!-- Buttons -->
           <div class='field' align='right'>
             <div class='ui icon buttons'>
-              <button class='ui button' id='add-lights-button' data-content="Add lights to group">
+              <button class='ui button' name='<%= group._id %>' id='add-lights-button' data-content="Add lights to group">
                 <i class='plus square outline icon'></i>
               </button>
-              <button class='ui button' id='remove-lights-button' data-content="Remove lights from group">
+              <button class='ui button' name='<%= group._id %>' id='remove-lights-button' data-content="Remove lights from group">
                 <i class='minus square outline icon'></i>
               </button>
-              <button class='ui red button' id='delte-group-button' data-content="Delete group">
+              <button class='ui red button' name='<%= group._id %>' id='delete-group-button' data-content="Delete group">
                 <i class='trash alternate outline icon'></i>
               </button>
             </div>
@@ -98,9 +98,9 @@
 <div class='ui modal' id='add-lights-modal'>
 	<div class='header'>Add Lights to Group</div>
 
-  	<div class='content'>
+  	<div class='content' id='add-lights-modal-content'>
     <form class='my ui form' id='add-lights-form' action='/add-lights' method='post'>
-     	<div class='grouped fields'>
+     	<div class='grouped fields' id='add-lights-fields'>
      		<label>Group Name</label>
 	      	<div class='field'>
 	      		<div class='ui checkbox'>
@@ -123,6 +123,7 @@
 		</div>
     </form>
   </div>
+
   <div class='actions'>
     <button class='ui button' type='submit' form='add-lights-form'>Add Lights</button>
     <div class='ui red deny button'>Cancel</div>
