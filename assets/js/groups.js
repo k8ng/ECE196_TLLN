@@ -14,12 +14,19 @@ $('.button')
   .popup()
 ;
 
+$('.ui.modal')
+  .modal()
+;
+
 $('.ui.button').click(function() {
-	if ($(this).attr('id') == 'add-light-button') {
-		$('#add-light-modal').modal('show');
+	if ($(this).attr('id') == 'add-group-button') {
+		$('#add-group-modal').modal('show');
 	}
-	else if ($(this).attr('id') == 'remove-light-button') {
-		$('#remove-light-modal').modal('show');
+	else if ($(this).attr('id') == 'add-lights-button') {
+		$('#add-lights-modal').modal('show');
+	}
+	else if ($(this).attr('id') == 'remove-lights-button') {
+		$('#remove-lights-modal').modal('show');
 	}
 	else if ($(this).attr('id') == 'delete-group-button') {
 
