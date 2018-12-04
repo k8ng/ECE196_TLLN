@@ -87,7 +87,7 @@ router.post('/setup-lights', (req,res) => {
 
 // Route to delete a light
 router.delete('/delete-light', (req,res) => {
-
+  db.Lights.getElementById()
 });
 
 // Route to add a group to our database

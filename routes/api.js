@@ -12,6 +12,6 @@ var express = require('express'),
 *****/
 
 router.route('/data')
-	.get(dataHelpers.getData);
+	.get(dataHelpers.getLights);
 
 module.exports = router;
