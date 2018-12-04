@@ -19,9 +19,16 @@ router.get('/individuals', (req,res) => {
 });
 
 router.get('/groups', (req,res) => {
-	res.render('groups');
+  db.Groups.find()
+  .then( function(groupCursor) {
+	  res.render('groups');
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
 });
 
+// route to turn a light on
 router.post('/set-lights', (req,res) => {
   console.log('form posted');
   console.log('name: ', req.body.name);
@@ -45,10 +52,7 @@ router.post('/set-lights', (req,res) => {
   return res.send('updated database');
 });
 
-router.get('/setup-lights', (req,res) => {
-  res.render('setup-lights');   
-});
-
+// Route to add a light to our database
 router.post('/setup-lights', (req,res) => {
   // condition check
   if (!(req.body.lightName.length && req.body.hubIP.length && req.body.lightID.length)) {
@@ -79,6 +83,22 @@ router.post('/setup-lights', (req,res) => {
   .catch( function(err) {
     res.send(err);
   });
+});
+
+// Route to delete a light
+router.delete('/delete-light', (req,res) => {
+
+});
+
+// Route to add a group to our database
+router.post('/setup-group', (req,res) => {
+  // condition check
+  if (!(req.body.groupName.length)) {
+    res.redirect('/groups');
+    return;
+  }
+
+  // setup the data to post
 });
 
 module.exports = router;

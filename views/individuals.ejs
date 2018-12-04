@@ -2,7 +2,7 @@
 <% include ./partials/header %>
 <h1 class='ui header'>Individual Lights</h1>
 
-<button class='ui blue labeled icon button'>
+<button class='ui blue labeled icon button' id='add-light-button'>
   <i class='plus square outline icon'></i>
   <label>Add new light</label>
 </button>
@@ -13,11 +13,17 @@
 <div class='ui stackable grid'>
   <!--"All Lights" Switch-->
 	<div class='column'> 
-  <!--List of lights to toggle-->
-		<form class='ui form' action='/individuals' method='post' id='lights-switch'>
-      <!-- Populate the lights -->
-      <% lights.forEach( function(light, i) { %>
-        <%= light %>
+    <!--List of lights to toggle-->
+    <!-- Populate the lights -->
+    <% lights.forEach( function(light, i) { %>
+      <%= light %>
+      <div class='inline fields'>
+        <div class='field'>
+          <button class='ui red mini icon button' id='delete-button' name='<%= light._id %>'>
+            <i class="x icon"></i>
+          </button>
+        </div>
+
         <div class='field'>
           <div class='ui toggle checkbox' name='<%= light._id %>'>
             <!-- Automatically check the checkbox if it's on in the database -->
@@ -25,8 +31,8 @@
             <label><%= light.name %></label>
           </div>
         </div>
-      <% }) %>
-		</form>
+      </div>
+    <% }) %>
 	</div>
 </div>
 
@@ -35,14 +41,16 @@
   <div class='header'>Add New Light</div>
 
   <div class='content'>
-    <form class='my ui form' id='add-light-form' action='/setup-lights' method='post'>
+    <form class='ui form' id='add-light-form' action='/setup-lights' method='post'>
       <div class='required field'>
         <label>Light Name</label>
         <input type='text' name='lightName'>
       </div>
       <div class='field'>
-        <label>Light On</label>
-        <input type='checkbox' name='lightIsOn'>
+        <div class='ui checkbox'>
+          <input type='checkbox' name='lightIsOn'>
+          <label>Light On</label>
+        </div>
       </div>
       <div class='required field'>
         <label>Hub IP</label>

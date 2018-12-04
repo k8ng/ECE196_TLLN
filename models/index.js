@@ -10,3 +10,4 @@ mongoose.promise = Promise;
 
 // Export schemas
 module.exports.Lights = require('./lights');
+module.exports.Groups = require('./groups');
