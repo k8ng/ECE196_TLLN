@@ -20,14 +20,15 @@
         <!-- for debugging purposes <%= light %> -->
         <div class='inline fields'>
           <div class='field'>
-            <button class='ui red mini icon button' id='delete-button' name='<%= light._id %>'>
+            <button class='ui red mini icon button' type='submit' form='delete-light-form' id='delete-button' name='<%= light._id %>'>
               <i class="x icon"></i>
             </button>
           </div>
+
           <div class='field'>
             <div class='ui toggle checkbox' name='<%= light._id %>'>
               <!-- Automatically check the checkbox if it's on in the database -->
-              <input type='checkbox' <%= light.lightIsOn ? 'checked' : '' %>>
+              <input type='checkbox' <%= light.lightIsOn ? 'checked' : '' %> >
               <label><%= light.name %></label>
             </div>
           </div>
@@ -36,6 +37,11 @@
     </div>
 	</div>
 </div>
+
+<form class='ui form' action='/delete-light' method='post' id='delete-light-form'>
+  <div class='field'
+  </div>
+</form>
 
 <!-- Popup for adding new lights -->
 <div class='ui modal'>

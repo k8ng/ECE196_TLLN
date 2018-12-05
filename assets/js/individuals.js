@@ -67,7 +67,3 @@ $('.button').popup();
 $('#add-light-button').click(function() {
   $('.ui.modal').modal('show');
 });
-
-$('#delete-button').click(function() {
-
-});

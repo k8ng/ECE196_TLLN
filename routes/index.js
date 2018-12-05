@@ -89,8 +89,16 @@ router.post('/setup-lights', (req,res) => {
 });
 
 // Route to delete a light
-router.delete('/delete-light', (req,res) => {
-  db.Lights.getElementById()
+router.post('/delete-light', (req,res) => {
+  console.log(req.body);
+  var lightID = Object.keys(req.body)[0];
+  console.log('################');
+  console.log(lightID);
+  console.log('################');
+  db.Lights.findOneAndRemove( {_id: lightID})
+  .then( function(result) {
+    res.redirect('/individuals');
+  })
 });
 
 // Route to add a group to our database
