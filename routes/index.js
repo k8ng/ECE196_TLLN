@@ -144,4 +144,40 @@ router.get('/get-lights', (req,res) => {
   });
 });
 
+// Route to add lights to a group
+router.post('/add-lights', (req,res) => {
+  console.log('#############');
+  console.log(req.body);
+  // Find the requested Groups Table
+  db.Groups.findOneAndUpdate( 
+    {'_id': req.body.groupID}, 
+    { $push: { lights: Object.keys(req.body.selection)} } )
+  .then( function (foundGroup) {
+    // append the new lights to the lights list
+    console.log(foundGroup);
+    res.redirect('/groups');
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
+});
+
+// Route to remove lights frmo a group
+router.post('/remove-lights', (req,res) => {
+  console.log(req.body);
+  console.log(Object.keys(req.body.selection));
+  // Find the requested Groups Table
+  db.Groups.findOneAndUpdate( 
+    {'_id': req.body.groupID}, 
+    { $pull: { lights: { $in: Object.keys(req.body.selection) } } } )
+  .then( function (foundGroup) {
+    // append the new lights to the lights list
+    console.log(foundGroup);
+    res.redirect('/groups');
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
+});
+
 module.exports = router;
