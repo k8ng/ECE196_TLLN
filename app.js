@@ -12,8 +12,6 @@ app.use(express.static(__dirname + '/assets'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds225624.mlab.com:25624/ece196_tlln');
-mongoose.promise = Promise;
 
 // ROUTES
 app.use('/', indexRoutes);
