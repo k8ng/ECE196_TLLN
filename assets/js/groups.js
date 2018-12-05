@@ -27,7 +27,6 @@ $('.ui.button').click(function() {
     // make database request to get the name of the group and the lights
     // inside of the group
     $.get('/get-group', { groupID: $(this).attr('name') }, function(theGroup) {
-      console.log(theGroup);
 
       // empty out our modal since we need to construct it based on the group
       // we selected
@@ -41,14 +40,11 @@ $('.ui.button').click(function() {
       // make database call to lights to get list of all the lights
       $.get('/get-lights', function(lights) {
         var existingLights = theGroup.lights;
-        console.log('lights: ', lights);
-        console.log('existing lights: ', existingLights);
 
         // filter all the lights for the ones not already in this group
         lights = lights.filter(light => !(existingLights.includes(light._id)));
         
         // for each light remaining, construct a new checkbox
-        console.log('lights: ', lights);
         lights.forEach( function(light,i) {
           // construct the HTML
           var appendHTML = '<div class=\'field\'>';
@@ -83,14 +79,11 @@ $('.ui.button').click(function() {
 
       $.get('/get-lights', function(lights) {
         var existingLights = theGroup.lights;
-        console.log('lights: ', lights);
-        console.log('existing lights: ', existingLights);
 
         // filter all the lights for the ones not already in this group
         lights = lights.filter(light => existingLights.includes(light._id));
         
         // for each light remaining, construct a new checkbox
-        console.log('lights: ', lights);
         lights.forEach( function(light,i) {
           // construct the HTML
           var appendHTML = '<div class=\'field\'>';

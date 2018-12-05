@@ -33,9 +33,6 @@ router.get('/groups', (req,res) => {
 
 // route to turn a light on
 router.post('/set-lights', (req,res) => {
-  console.log('form posted');
-  console.log('name: ', req.body.name);
-  console.log('lightIsOn: ', req.body.lightIsOn);
 
   // setting
   var lightSetting = {
@@ -76,8 +73,6 @@ router.post('/setup-lights', (req,res) => {
     lightSettings['lightIsOn'] = true;
   }
 
-  console.log(lightSettings);
-
   // update the database entry for that lightID
   db.Lights.create(lightSettings)
   .then( function(edited) {
@@ -90,11 +85,7 @@ router.post('/setup-lights', (req,res) => {
 
 // Route to delete a light
 router.post('/delete-light', (req,res) => {
-  console.log(req.body);
   var lightID = Object.keys(req.body)[0];
-  console.log('################');
-  console.log(lightID);
-  console.log('################');
   db.Lights.findOneAndRemove( {_id: lightID})
   .then( function(result) {
     res.redirect('/individuals');
@@ -110,13 +101,11 @@ router.post('/setup-group', (req,res) => {
   }
   
   // setup the data to post
-  //console.log(req.body);
   var light_ids = Object.keys(req.body.selection);
   var groupSettings = {
     'name': req.body.groupName,
     'lights': light_ids
   }
-  //console.log(groupSettings);
 
   // create new database entry
   db.Groups.create(groupSettings)
@@ -131,10 +120,8 @@ router.post('/setup-group', (req,res) => {
 
 // Route to return the data for a group
 router.get('/get-group', (req,res) => {
-  console.log(req.query.groupID);
   db.Groups.findOne({'_id': req.query.groupID})
   .then(function (foundGroup) {
-    console.log(foundGroup);
     res.send(foundGroup);
   })
   .catch( function(err) {
@@ -154,15 +141,12 @@ router.get('/get-lights', (req,res) => {
 
 // Route to add lights to a group
 router.post('/add-lights', (req,res) => {
-  console.log('#############');
-  console.log(req.body);
   // Find the requested Groups Table
   db.Groups.findOneAndUpdate( 
     {'_id': req.body.groupID}, 
     { $push: { lights: Object.keys(req.body.selection)} } )
   .then( function (foundGroup) {
     // append the new lights to the lights list
-    console.log(foundGroup);
     res.redirect('/groups');
   })
   .catch( function(err) {
@@ -172,15 +156,12 @@ router.post('/add-lights', (req,res) => {
 
 // Route to remove lights frmo a group
 router.post('/remove-lights', (req,res) => {
-  console.log(req.body);
-  console.log(Object.keys(req.body.selection));
   // Find the requested Groups Table
   db.Groups.findOneAndUpdate( 
     {'_id': req.body.groupID}, 
     { $pull: { lights: { $in: Object.keys(req.body.selection) } } } )
   .then( function (foundGroup) {
     // append the new lights to the lights list
-    console.log(foundGroup);
     res.redirect('/groups');
   })
   .catch( function(err) {
