@@ -36,7 +36,7 @@
               <% group.lights.forEach( function(light,i) { %>
                 <div class='field'>
                   <div class='ui toggle checkbox' name='<%= light %>'>
-									<input type='checkbox' <%= lights.find(function(e) { return e._id == light} ).lightIsOn ? 'checked' : '' %>>
+									  <input type='checkbox' <%= lights.find(function(e) { return e._id == light} ).lightIsOn ? 'checked' : '' %>>
                     <label><%= lights.find(function(e) { return e._id == light}).name %></label>
                   </div>
                 </div>

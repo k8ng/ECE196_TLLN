@@ -16,8 +16,10 @@ $('.button')
   .popup()
 ;
 
+$('.ui.checkbox').checkbox();
+
 // update the database when someone clicks a toggle checkbox
-$('.ui.toggle').click(function() {
+$('.ui.toggle').click(function(e) {
   // user toggles light on
   if ($(this).checkbox('is checked')) {
     console.log('Toggle On');
@@ -51,6 +53,9 @@ $('.ui.toggle').click(function() {
   // user toggles light off
   } else {
     console.log('Toggle Off');
+    $(this).removeClass('checked');
+    $(this).prop('checked', false);
+    $(this).find('input').prop('checked', false);
 
     var formData = {
       name: $(this).attr('name'),
