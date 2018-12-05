@@ -20,7 +20,7 @@
         </div>
         <div class='inline fields'>
           <div class="field" align='right'>
-            <div class="ui toggle checkbox">
+            <div class="group ui toggle checkbox" name='<%= group._id %>'>
               <input type='checkbox'>
               <label>Toggle Group</label>
             </div>
@@ -35,7 +35,7 @@
 
               <% group.lights.forEach( function(light,i) { %>
                 <div class='field'>
-                  <div class='ui toggle checkbox' name='<%= light %>'>
+                  <div class='my ui toggle checkbox <%= lights.find(function(e) { return e._id == light} ).lightIsOn ? 'checked' : '' %>' name='<%= light %>' id='<%= group._id %>'>
 									  <input type='checkbox' <%= lights.find(function(e) { return e._id == light} ).lightIsOn ? 'checked' : '' %>>
                     <label><%= lights.find(function(e) { return e._id == light}).name %></label>
                   </div>

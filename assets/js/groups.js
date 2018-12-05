@@ -18,8 +18,43 @@ $('.button')
 
 $('.ui.checkbox').checkbox();
 
+$('.group.ui.toggle').click(function() {
+  
+  // get list of all toggle checkboxes
+  checkboxes = $('.my.ui.toggle');
+  console.log(checkboxes);
+  
+  // filter out everything except the ones that are part of this group
+  checkboxes = checkboxes.filter(checkbox => $(checkboxes[checkbox]).attr('id') == $(this).attr('name'));
+  
+  console.log(checkboxes);
+  // toggle group is on
+  if ($(this).checkbox('is checked')) {
+    console.log('Toggle On');
+    console.log(checkboxes.length);
+    for (i = 0; i < checkboxes.length; i++) {
+      if (!$(checkboxes[i]).checkbox('is checked')) {
+        console.log('checking');
+        console.log($(checkboxes[i]).checkbox('is checked'));
+        $(checkboxes[i]).click();
+        console.log($(checkboxes[i]).checkbox('is checked'));
+      }
+    }
+  } else {
+  // toggle group is off
+    console.log('Toggle Off');
+    for (i = 0; i < checkboxes.length; i++) {
+      if ($(checkboxes[i]).checkbox('is checked')) {
+        $(checkboxes[i]).click();
+      }
+    }
+  }
+});
+
 // update the database when someone clicks a toggle checkbox
-$('.ui.toggle').click(function(e) {
+$('.my.ui.toggle').click(function(e) {
+  console.log('clicked');
+  console.log($(this).checkbox('is checked'));
   // user toggles light on
   if ($(this).checkbox('is checked')) {
     console.log('Toggle On');
@@ -53,9 +88,6 @@ $('.ui.toggle').click(function(e) {
   // user toggles light off
   } else {
     console.log('Toggle Off');
-    $(this).removeClass('checked');
-    $(this).prop('checked', false);
-    $(this).find('input').prop('checked', false);
 
     var formData = {
       name: $(this).attr('name'),
