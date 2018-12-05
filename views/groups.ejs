@@ -54,7 +54,7 @@
               <button class='ui button' name='<%= group._id %>' id='remove-lights-button' data-content="Remove lights from group">
                 <i class='minus square outline icon'></i>
               </button>
-              <button class='ui red button' name='<%= group._id %>' id='delete-group-button' data-content="Delete group">
+              <button class='ui red button' type='submit' form='delete-group-form' name='<%= group._id %>' id='delete-group-button' data-content="Delete group">
                 <i class='trash alternate outline icon'></i>
               </button>
             </div>
@@ -64,6 +64,8 @@
   <%})%>
 </div>
 
+<form class='ui form' action='/delete-group' method='post' id='delete-group-form'>
+</form>
 <!-- Popup window for adding groups -->
 <div class='ui modal' id='add-group-modal'>
 	<div class='header'>Add New Group</div>

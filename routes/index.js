@@ -88,8 +88,17 @@ router.post('/delete-light', (req,res) => {
   var lightID = Object.keys(req.body)[0];
   db.Lights.findOneAndRemove( {_id: lightID})
   .then( function(result) {
-    res.redirect('/individuals');
+    db.Groups.updateMany({}, { $pull: { lights: { $in: lightID } } } )
+    .then( function(result) {
+      res.redirect('/individuals');
+    })
+    .catch(function(err) {
+      res.send(err);
+    })
   })
+  .catch( function(err) {
+    res.send(err);
+  });
 });
 
 // Route to add a group to our database
@@ -101,7 +110,11 @@ router.post('/setup-group', (req,res) => {
   }
   
   // setup the data to post
-  var light_ids = Object.keys(req.body.selection);
+  var light_ids = []
+  if (req.body.selection) {
+     light_ids = Object.keys(req.body.selection);
+  }
+  
   var groupSettings = {
     'name': req.body.groupName,
     'lights': light_ids
@@ -154,7 +167,7 @@ router.post('/add-lights', (req,res) => {
   });
 });
 
-// Route to remove lights frmo a group
+// Route to remove lights from a group
 router.post('/remove-lights', (req,res) => {
   // Find the requested Groups Table
   db.Groups.findOneAndUpdate( 
@@ -167,6 +180,15 @@ router.post('/remove-lights', (req,res) => {
   .catch( function(err) {
     res.send(err);
   });
+});
+
+// Route to delete a group
+router.post('/delete-group', (req,res) => {
+  var groupID = Object.keys(req.body)[0];
+  db.Groups.findOneAndRemove( {_id: groupID})
+  .then( function(result) {
+    res.redirect('/groups');
+  })
 });
 
 module.exports = router;
