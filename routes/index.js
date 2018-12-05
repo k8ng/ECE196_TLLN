@@ -110,7 +110,11 @@ router.post('/setup-group', (req,res) => {
   }
   
   // setup the data to post
-  var light_ids = Object.keys(req.body.selection);
+  var light_ids = []
+  if (req.body.selection) {
+     light_ids = Object.keys(req.body.selection);
+  }
+  
   var groupSettings = {
     'name': req.body.groupName,
     'lights': light_ids
@@ -180,11 +184,10 @@ router.post('/remove-lights', (req,res) => {
 
 // Route to delete a group
 router.post('/delete-group', (req,res) => {
-  console.log(req.body);
   var groupID = Object.keys(req.body)[0];
   db.Groups.findOneAndRemove( {_id: groupID})
   .then( function(result) {
-    res.redirect('/individuals');
+    res.redirect('/groups');
   })
 });
 
